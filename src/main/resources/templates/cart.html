@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="#">Features</a>
+        <a class="p-2 text-dark" href="#">Enterprise</a>
+        <a class="p-2 text-dark" href="#">Support</a>
+        <a class="p-2 text-dark" href="#">Cos
+            <span th:text="${shoppingCartSize}"></span>
+        </a>
+    </nav>
+    <a class="btn btn-outline-primary" href="#">Log out</a>
+</div>
+
+<div class="shop-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="max-width: 700px;">
+    <h1 class="display-4">Cele mai noi telefoane</h1>
+    <p class="lead">Doar la noi gasesti cele mai noi si performante telefoane. Vezi mai jos cele mai hot oferte!</p>
+</div>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nume</th>
+        <th scope="col">cantitate</th>
+        <th scope="col">pretTotal</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c:${cartItems}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.nume}"></td>
+        <td th:text="${c.cantitateCos}"></td>
+        <td th:text="${c.sumaTotala}"></td>
+    </tr>
+    </tbody>
+</table>
+<p>Totalul comenzii tale este:</p>
+<p th:text="${totalPretComanda}"></p> <p>RON</p>
+
+<form action="/sendOrder" method="post">
+    <button type="submit">Trimite Comanda</button>
+</form>
+
+</body>
+</html>
